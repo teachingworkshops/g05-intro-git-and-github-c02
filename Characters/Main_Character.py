@@ -1,7 +1,7 @@
 # Character class
 from User_Objects.Backpack import backpack
 
-class character:
+class main_character:
     def __init__(self, name):
         self.name = name
 

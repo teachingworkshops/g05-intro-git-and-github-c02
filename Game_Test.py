@@ -3,8 +3,13 @@
 
 from Scenes.FallScene import fall_scene
 
+from Characters.Main_Character import main_character
+
 def main():
-    fall_scene.run_scene()
+    while True:
+        traveler = main_character(input("What is your name?"))
+        print("Good luck, " +traveler.name+ ".")
+        fall_scene.run_scene()
 
 if __name__ == "__main__":
     main()
