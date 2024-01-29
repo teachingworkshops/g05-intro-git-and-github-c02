@@ -10,8 +10,9 @@ class Weapon(Item):
                 ):
         
         self.damage = damage
+        self.description = description+"\ndamage: "+str(damage)+"hp\n"
 
         # Child class of item, can reference item attributes and functions
-        super().__init__(name, description, cost_value)
+        super().__init__(name, self.description, cost_value)
 
 

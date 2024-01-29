@@ -24,49 +24,53 @@ class Merchant:
         print("Here is what I have available\n")
         self.display_store()
 
-        item_index = input("\nIs there anything that interests you? Enter 'q' to leave the store.\n")
-        while item_index != 'q':
+        item_input = input("\nIs there anything that interests you? Enter 'q' to leave the store.\n")
+        while item_input != 'q':
             # Present more information on the object of interest
             try:
+                item_index = int(item_input)
                 item = self.store_items[item_index]
 
-                print("Ah yes of course!\n")
-                print(f"\n{item.description}\n")
+                print("\nAh yes of course!\n")
+                print(f"\n{item.name} description: {item.description}\n")
 
-                while True:
-                    buy_item = input(f"\nWould you like to purchase this item for {item.value}? Enter ['y'] or ['n'].\n")
-
-                    # If the main character wants to buy the item of interest
-                    if buy_item == 'y':
-                        # Subtracks the amount of coins the main character has
-                        main_character.coin_storage = main_character.coin_storage - item.value
-
-                        # Adds the bought item to the character's backpack
-                        main_character.backpack.append(item)
-                        print("\n")
-                        break
-
-                    # If the main character doesn't want to buy the item of interest
-                    elif buy_item == 'n':
-                        print("\n")
-                        break
-
+                print(f"You have {main_character.coin_storage} coins.")
+                buy_item = input(f"\nWould you like to purchase this item for {item.cost_value}? Enter ['y'] or ['n'].\n")
+                while buy_item != 'y' and buy_item != 'n':
                     # If the main character inputs an answer that is not 'y' or 'n'
+                    print("I didn't catch that answer.\n")
+                    print(f"You have {main_character.coin_storage} coins.")
+                    buy_item = input(f"\nWould you like to purchase this item for {item.cost_value}? Enter ['y'] or ['n'].\n")
+
+                # If the main character wants to buy the item of interest
+                if buy_item == 'y':
+                    # Checks that you have enough coin to purchase item
+                    if main_character.coin_storage - item.cost_value < 0:
+                        print("You do not have enough coins to purchase this item.\n")
                     else:
-                        print("I didn't catch that answer.\n")
+                        # Subtracks the amount of coins the main character has
+                        main_character.coin_storage = main_character.coin_storage - item.cost_value
+                        # Adds the bought item to the character's backpack
+                        main_character.backpack.backpack_storage.append(item)
+                        print(f"Here is your {item.name}. Thank you for your business!\n\n")
+                # If the main character doesn't want to buy the item of interest
+                else:
+                    print("\n")
 
                 self.display_store()
 
-                item_index = input("\nIs there something else that interests you? Enter 'q' to leave the store.\n")
+                item_input = input("\nIs there something else that interests you? Enter 'q' to leave the store.\n")
 
-            # If there is an exception, the input number is not an index for one of the items     
-            except: 
+            # If there is an exception, the input number is not an index for one of the items  
+            except IndexError: 
                 print("Unfortunately, I do not have the item you requested.\n\n")
                 self.display_store()
 
-                item_index = input("\nIs there something else that interests you? Enter 'q' to leave the store.\n")
+                item_input = input("\nIs there something else that interests you? Enter 'q' to leave the store.\n")
+            except Exception as exp:
+                print(exp)   
 
-        print("Thank you for stopping by! Goodluck on your journey!\n")
+        print("\nThank you for stopping by! Goodluck on your journey!\n")
 
         
 

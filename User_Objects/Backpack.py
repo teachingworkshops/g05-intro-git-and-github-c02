@@ -10,6 +10,8 @@ class Backpack(Item):
                 ):
         
         self.storage_val = storage_val
+        self.description = description +"\nstorage value: "+str(self.storage_val)+"\n"
+
 
         # List of objects in the characters backpack (not including maps and keys)
         self.backpack_storage = []
@@ -21,4 +23,4 @@ class Backpack(Item):
         self.key_storage = []
 
         # Child class of item, can reference item attributes and functions
-        super().__init__(name, description, cost_value)
+        super().__init__(name, self.description, cost_value)
