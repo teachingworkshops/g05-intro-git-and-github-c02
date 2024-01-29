@@ -1,6 +1,14 @@
 # Backpack class
-class backpack:
-    def __init__(self, storage_val):
+from .Item import Item
+
+class Backpack(Item):
+    def __init__(self, 
+                 name, 
+                 description, 
+                 cost_value, 
+                 storage_val
+                ):
+        
         self.storage_val = storage_val
 
         # List of objects in the characters backpack (not including maps and keys)
@@ -11,3 +19,6 @@ class backpack:
 
         # List of key objects
         self.key_storage = []
+
+        # Child class of item, can reference item attributes and functions
+        super().__init__(name, description, cost_value)
