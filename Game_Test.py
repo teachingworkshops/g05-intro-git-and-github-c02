@@ -2,6 +2,7 @@
 # When each scene has been completed the method for the next scene is called
 
 from Scenes.FallScene import fall_scene
+from Scenes.SummerScene import summer_scene
 
 from Characters.Main_Character import MainCharacter
 
