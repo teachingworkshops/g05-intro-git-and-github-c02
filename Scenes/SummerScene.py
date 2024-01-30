@@ -22,5 +22,5 @@ class summer_scene():
         print("You see plains straight ahead, between you and the tower. You'll have to cross them to get to Timebro.\n")
         print("To the East you see a gaping cave mouth. The insides are a mystery.\n")
         print("To the far west, you can see an abandoned barn. Perhaps it can be looted.\n")
-        print("Where do you go? plains/cave/barn")
+        print("Where do you go? OPTIONS: plains/cave/barn")
     run_scene(MainCharacter)
