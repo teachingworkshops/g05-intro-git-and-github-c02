@@ -15,8 +15,12 @@ class summer_scene():
         print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside.\n")
         print("You're struck with a wall of heat as you walk forward. This is the final season.\n")
         print("The final realm before you reach Timebro. Summer.\n")
+        summer_scene.intro_choices()
 
     def intro_choices():
         zones = ["plains,cave,barn,tower,lakebed"]
-        print("Where do you go?")
+        print("You see plains straight ahead, between you and the tower. You'll have to cross them to get to Timebro.\n")
+        print("To the East you see a gaping cave mouth. The insides are a mystery.\n")
+        print("To the far west, you can see an abandoned barn. Perhaps it can be looted.\n")
+        print("Where do you go? plains/cave/barn")
     run_scene(MainCharacter)
