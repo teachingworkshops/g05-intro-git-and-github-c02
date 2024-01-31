@@ -20,9 +20,9 @@ class fall_scene:
         print("---- Merchant Test: ----\n\n")
         print(f"Traveler begins with {traveler.coin_storage} coins\n")
         print("Creating three items: a sword, a backpack, a helmet\n\n\n")
-        sword = Weapon("sword", "a weapon that deals damage to enemies", 25, 50)
-        backpack_object = Backpack("backpack", "carries items that you pick up", 50, 5)
-        helmet = Armor("helmet", "adds protection to any danger that approaches", 35, "head", 50)
+        sword = Weapon("sword", "a weapon that deals damage to enemies", True, 25, 50)
+        backpack_object = Backpack("backpack", "carries items that you pick up", True, 50, 5)
+        helmet = Armor("helmet", "adds protection to any danger that approaches", True, 35, "head", 50)
 
         merchant_store_list = [sword, backpack_object, helmet]
         fall_scene_merchant = Merchant(merchant_store_list)
