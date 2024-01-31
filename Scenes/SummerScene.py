@@ -76,7 +76,14 @@ class summer_scene:
                     summer_scene.intro_choices()
 
     def cave(first_visit):
-        print("You arrive at the cave, and the first thing you notice is that it's strikingly dark, almost darker than it should be. You're certain you won't be able to navigate without a light. There are several old barrels lying around the outside, though they look to be filled with dirt and other refuse.")
+        if first_visit:
+            print("You arrive at the cave, and the first thing you notice is that it's strikingly dark, almost darker than it should be. You're certain you won't be able to navigate without a light. There are several old barrels lying around the outside, though they look to be filled with dirt and other refuse.")
+            summer_scene.cave_event_1()
+        else:
+            print("You return to the cave, curious what else it may be hiding.")
+            summer_scene.cave_event_1()    
+    
+    def cave_event_1():
         cave_choice = ""
         cave_options = ["1","2","3"]
 
@@ -84,21 +91,22 @@ class summer_scene:
             print("What do you do?\nOPTIONS:\n1 - Explore Cave\n2 - Rummage Through Barrels")
             cave_choice = input()
             if cave_choice is "1":
-                summer_scene.cave_event_1()
+                has_lantern = False
+                #CHECK IF THEY HAVE LANTERN??
+                if has_lantern is False:
+                    print("Against your better judgement, you walk into the cave without a light to shine the way. You walk until you can't see anything around you, until eventually you hear growling. You don't even have time to react before the source of the sound eats you in one bite.\n YOU HAVE DIED")
+                elif has_lantern is True:
+                    summer_scene.cave_event_2()
             elif cave_choice is "2":
                 #ADD ITEM TO LOOT
-                print("You scavenge for loot in the barrels, and most of them hold nothing of note. A glint catches your eye in one of them though, and you reach in to dig around for whatever it was. You feel something solid, and you pull your hand out to reveal a silver ring, with a purple gemstone encrested in it.")
-    
-    def cave_event_1():
-        has_lantern = False
-        #CHECK IF THEY HAVE LANTERN??
-        if has_lantern is False:
-            print("Against your better judgement, you walk into the cave without a light to shine the way. You walk until you can't see anything around you, until eventually you hear growling. You don't even have time to react before the source of the sound eats you in one bite.\n YOU HAVE DIED")
-        elif has_lantern is True:
-            summer_scene.cave_event_2()
+                print("You rummage for loot in the barrels, and most of them hold nothing of note. A glint catches your eye in one of them though, and you reach in to dig around for whatever it was. You feel something solid, and you pull your hand out to reveal a silver ring, with a purple gemstone encrested in it.")
+
 
     def cave_event_2():
         print("You press into the cave with your trusty Everflame lantern, and as you walk deeper through the tunnels, you hear something whimper away from the light, retreating further into the darkness of the cave. The tunnel eventually opens into a circular space with another tunnel on the other side. The tunnel has a different texture to it, almost flesh-like rather than stone. In the middle of this room is a sword in a stone.")
+        summer_scene.cave_event_3()
+
+    def cave_event_3():
         cave_choice_2 = ""
         cave_options_2 = ["1","2","3"]
         while cave_choice_2 not in cave_options_2:
@@ -114,5 +122,12 @@ class summer_scene:
                 summer_scene.cave()
 
     def barn(first_visit):
+        print("You arrive at the barn, and it looks even more worn down up close. It appears to be the only standing structure aside from the tower for miles. Miscellaneous supplies are strewn about outside, and the front door doesn't appear to be locked.")
+        
         done = False
+
+    def barn_event_1():
+        done = false;
+
+
     run_scene(MainCharacter)
