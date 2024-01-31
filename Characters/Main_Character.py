@@ -9,7 +9,7 @@ class MainCharacter:
         self.name = name
 
         # Character starts with a backpack with the capacity of holding a maximum of three objects
-        self.backpack = Backpack("backpack", "allows you to store items that you find", 50, STARTING_BACKPACK_STORAGE)
+        self.backpack = Backpack("backpack", "allows you to store items that you find", False, 50, STARTING_BACKPACK_STORAGE)
 
         # Starts with 50 coins?
         self.coin_storage = 50

@@ -5,6 +5,7 @@ class Backpack(Item):
     def __init__(self, 
                  name, 
                  description, 
+                 can_sell,
                  cost_value, 
                  storage_val
                 ):
@@ -23,4 +24,4 @@ class Backpack(Item):
         self.key_storage = []
 
         # Child class of item, can reference item attributes and functions
-        super().__init__(name, self.description, cost_value)
+        super().__init__(name, self.description, can_sell, cost_value)

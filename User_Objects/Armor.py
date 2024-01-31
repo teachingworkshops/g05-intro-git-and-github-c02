@@ -5,6 +5,7 @@ class Armor(Item):
     def __init__(self, 
                  name, 
                  description, 
+                 can_sell,
                  cost_value,
                  armor_type, 
                  protection_value
@@ -15,4 +16,4 @@ class Armor(Item):
         self.protection_value = protection_value
 
         # Child class of item, can reference item attributes and functions
-        super().__init__(name, self.description, cost_value)
+        super().__init__(name, self.description, can_sell, cost_value)
