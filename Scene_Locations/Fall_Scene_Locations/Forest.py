@@ -1,4 +1,4 @@
-from Locations import Locations
+import Locations
 
 class Forest(Locations):
     def __init__(self, name, discovered):

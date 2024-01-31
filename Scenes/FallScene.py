@@ -2,12 +2,15 @@
 
 from User_Objects.Armor import Armor
 from User_Objects.Key import Key
-#from User_Objects.Item import item
 from User_Objects.Weapon import Weapon
 from User_Objects.Backpack import Backpack
 
 from Characters.Main_Character import MainCharacter
 from Characters.Merchant_Character import Merchant
+
+from Scene_Locations.Fall_Scene_Locations.Farm import Farm
+from Scene_Locations.Fall_Scene_Locations.Forest import Forest
+from Scene_Locations.Fall_Scene_Locations.Great_Pumpkin import Great_Pumpkin
 
 class fall_scene:
     def __init__(self):
@@ -43,19 +46,26 @@ class fall_scene:
         print(f"\nMain character's backpack: {traveler.backpack.backpack_storage}")
         print(f"Main character's coin storage: {traveler.coin_storage} coins\n")
 
-    def travel_function():
-        print("Where would you like to travel to? Enter the number corresponding to the place.\n\n")
-        print("[0]Farm\n")
-        print("[1]Forest\n")
-        travel_action = input()
-        if travel_action == "0":
-            print("")
-            # Farm location
-        elif travel_action == "1":
-            print("")
-            # Forest location
-        else:
-            print("Please enter a number that corresponds to a place")
+    def travel_function(traveler):
+        # Create the all the locations -> Farm, forrest, great pumpkin
+        farm = Farm("Farm")
+        forest = Forest("Forest")
+        great_pumpkin = Great_Pumpkin("Great_Pumpkin")
+
+        # Both the farm and the forest need to be discovered to move on to have the option to go to the great pumpkin
+        while not farm.discovered and not forest.discovered:
+            print("Where would you like to travel to? Enter the number corresponding to the place.\n\n")
+            print("[0]Farm\n")
+            print("[1]Forest\n")
+            travel_action = input()
+            if travel_action == "0":
+                farm.location_scene(traveler)
+            elif travel_action == "1":
+                forest.location_scene(traveler)
+            else:
+                print("Please enter a number that corresponds to a place")
+
+        #while great_pumpkin
 
 # -- Farm Location -- 
         

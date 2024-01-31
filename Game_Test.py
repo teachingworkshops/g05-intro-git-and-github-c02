@@ -21,6 +21,7 @@ def main():
 
     print("Good luck, " +traveler.name+ ".")
     fall_scene.run_scene(traveler)
+    
     # Add functions to run other scenes
 
 if __name__ == "__main__":
