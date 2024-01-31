@@ -13,12 +13,17 @@ class summer_scene:
     first_barn_visit = True
     first_cave_visit = True
     knight_is_alive = True
+    entrance_first_visit = True
 
     # Initiates the opening of the Summer scene
-    def run_scene(traveler: MainCharacter):
-        print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside. You're enveloped by what feels like a wall of heat as you walk forward. This is the final realm. The final season before you reach Timebro. Summer.\n")
-        print("You can see Timebro's tower straight ahead, to the far North. You just need to get to him and this will all be over.")
-        
+    def run_scene(traveler: MainCharacter, first_visit):
+        if first_visit:
+            print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside. You're enveloped by what feels like a wall of heat as you walk forward. This is the final realm. The final season before you reach Timebro. Summer.\n")
+            print("You can see Timebro's tower straight ahead, to the far North. You just need to get to him and this will all be over.")
+            summer_scene.entrance_first_visit = False
+            
+        else:
+            print("You overlook the reach once more.")
         summer_scene.intro_choices()
 
     def intro_choices():
@@ -40,6 +45,7 @@ class summer_scene:
     def plains(first_visit, knight_alive):
         if first_visit and knight_alive:
             print("You walk across the lengthy field and notice a figure approaching in the distance. As you get closer, you realize he's much larger than you first thought. A hulking titan wearing a menacing suit of armor. He lodges his greatsword in the ground and speaks: '" +MainCharacter.__name__+ "!', he exclaims, 'I cannot let you go any further.'\n")
+            summer_scene.first_visit = False
             summer_scene.plains_event_1()
 
         elif knight_alive:
@@ -154,7 +160,7 @@ class summer_scene:
                 print("There's another pause. 'Haven't heard that name before. You must be another survivor. Here, let me get the door for ya.' You hear a sliding sound, and then the door opens to reveal a man in ragged clothing. He gestures inside.")
 
             elif barn_choice is "2":
-                print("Another pause, then you hear a scoff through the door. 'So that's what you're calling yourself now? Don't make yourself out to be a bigger fool than you already are, Johnny. Go away.' You take a step back and take in your surroundings again.")
+                print("Another pause, then you hear a scoff through the door. 'So that's what you're calling yourself now? Don't make yourself out to be a bigger fool than you already are, Johnny. Go away.' You step back and take in your surroundings again.")
                 summer_scene.barn_event_1()
     def barn_event_3():
         barn_choice = ""
@@ -163,7 +169,8 @@ class summer_scene:
             print("What do you do?\n\nOPTIONS:\n1 - Enter the Barn\n2 - Back Away")
             barn_choice = input()
             if barn_choice is "1":
-                done = False
+                print("You walk inside, and see only darkness until your eyes adjust to the dim light of the oil lamp hanging from a wood beam. Once you can see again, you realize there's several other people scattered around the barn. Presumably other survivors.")
+                print("\n'These are all the people left in this area. The rest didn't make it when Johnny cast that heat wave.")
             elif barn_choice is "2":
                 print("'Suit yourself,' the man says, closing the door once more.")
                 summer_scene.barn_event_1()
@@ -171,4 +178,4 @@ class summer_scene:
     def barn_event_4():
         done = False
 
-    run_scene(MainCharacter)
+    run_scene(MainCharacter,entrance_first_visit)
