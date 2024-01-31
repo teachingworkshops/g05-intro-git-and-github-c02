@@ -3,7 +3,8 @@ from User_Objects.Weapon import Weapon
 from User_Objects.Armor import Armor
 from User_Objects.Item import Item
 
-from Characters.Story_Character import Story_Character
+from Characters.Main_Character import MainCharacter
+from Characters.Story_Character import StoryCharacter
 
 global SWORD_VALUE
 SWORD_VALUE = 25
@@ -35,7 +36,7 @@ class Farm(Locations):
         self.horse_stable_wall = [chest_plate]
 
         # Create story character
-        self.farmer_bob = Story_Character("Farmer Bob")
+        self.farmer_bob = StoryCharacter("Farmer Bob")
 
         # Create sublocations
 
@@ -130,13 +131,11 @@ class Farm(Locations):
 
             action = input("[0]Approach farmer\n['i']Inspect sublocations\n['b']Open backpack\n['q']Leave location")
 
-class Barn(Farm):
-    def __init__(self, name, traveler):
+class Barn():
+    def __init__(self, name, traveler, farm):
         self.name = name
         self.traveler = traveler
-
-        # Child class of item, can reference item attributes and functions
-        super().__init__(name, self.discovered)
+        self.farm = farm
 
     def barn_scene(self):
         print("The barn's weathered door opened, revealing a vast expanse filled with the comforting scents of hay and aged wood.\n")
@@ -148,29 +147,100 @@ class Barn(Farm):
         print("['n']No\n")
         print("['q']Leave barn\n")
 
-        response = input()
+        response_1 = input()
 
         while True:
-            if response == 'y':
-                print("")
+            if response_1 == 'y':
+                print("Inside the wooden chest:\n\n")
+                for index, item in enumerate(self.wood_chest):
+                    print(f"[{index}] {item.name}       description: {item.description}       value: {item.cost_value}\n")
+                
+                print(f"\n[{index+1}]Take all\n")
+                print(f"\n[{index+2}]Exit wooden chest\n")
+
+                response_2 = input("Input a number value corresponding to an item you'd like to take.\n")
+
+                # While there are things in the wood chest and the user has not decided to leave the wooden chest
+                while len(self.wood_chest) > 0 and response_2 != index+2:
+                    try:
+                        # Adds item chose to the backpack
+                        item = self.wood_chest[int(response_2)]
+                        if item.name == "Gold Coins":
+                            self.traveler.coin_storage += item.cost_value
+                        else:
+                            self.traveler.backpack.backpack_storage.append(item)
+
+                        # Remove item from the wood chest
+                        self.wood_chest.remove(item)
+
+                    except IndexError: 
+                        print("Invalid input.\n\n")
+                        i = i-1
+                    except Exception as exp:
+                        print(exp)
+
+                    if len(self.traveler.backpack.backpack_storage) > self.traveler.backpack.storage_val:
+                        remove_item_num = len(self.traveler.backpack.backpack_storage) - self.traveler.backpack.storage_val
+                        print(f"You have {remove_item_num} to many items in your bag.")
+                        self.display_backpack_items()
+                        
+                        for i in range(remove_item_num):
+                            try:
+                                response_3 = input("Enter the number corresponding to the item youd like to remove")
+                                remove_item = self.traveler.backpack.backpack_storage[response_3]
+                                self.traveler.backpack.backpack_storage.remove(remove_item)
+
+                                self.display_backpack_items()
+                            except IndexError: 
+                                print("Invalid input.\n\n")
+                                i = i-1
+                            except Exception as exp:
+                                print(exp)
+
+                    print("Inside the wooden chest:\n\n")
+                    for index, item in enumerate(self.wood_chest):
+                        print(f"[{index}] {item.name}       description: {item.description}       value: {item.cost_value}\n")
+                    
+                    print(f"\n[{index+1}]Take all\n")
+                    print(f"\n[{index+2}]Exit wooden chest\n")
+
+                    response_2 = input("Input a number value corresponding to an item you'd like to take.\n")
                 break
-            elif response == 'n':
-                print("")
+            elif response_1 == 'n':
+                print("If you choose to check out items at a later time. You can go back.\n")
                 break
-            elif response == 'q':
+            elif response_1 == 'q':
                 break
             else:
                 print("Invalid response.\n")
 
-class Horse_Stable(Farm):
-    def __init__(self, name):
+class Horse_Stable():
+    def __init__(self, name: str, traveler: MainCharacter, farm: Farm):
         self.name = name
-
-        # Child class of item, can reference item attributes and functions
-        super().__init__(name, self.discovered)
+        self.traveler = traveler
+        self.farm = farm
     
     def horse_stable_scene(self):
-        print("")
+        print("The horse stables had an interesting smell.\n")
+        print("There were many horses inside eating and sleeping.\n")
+        print("Off to the side there hanging on the wall was some chest plate armor.\n")
+
+        print("Do you take the chest plate armor?\n")
+
+        # Add print of description of the chest plate
+        print("['y']Yes\n")
+        print("['n']No\n")
+        print("['q']Leave horse stables\n")
+
+        response_1 = input()
+        if response_1 == 'y':
+            if self.traveler.armor_dict["chest"] == "":
+                # Adds the armor to player
+                self.traveler.armor_dict[self.farm.horse_stable_wall[0].armor_type] = self.farm.horse_stable_wall[0]
+                # Need to update health points
+                # Remove the armor from the wall
+                # Check if the player has been to horse stables before
+
 
 class Corn_Maze(Farm):
     def __init_(self, name):
