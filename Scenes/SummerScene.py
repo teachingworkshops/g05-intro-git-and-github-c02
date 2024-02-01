@@ -68,8 +68,8 @@ class summer_scene:
                 print("What do you do?\n\nOPTIONS:\n1 - fight\n2 - run")
                 plains_choice = input()
                 if plains_choice == "1":
-                    if has_rexcalibur:
-                        print("Using Rexcalibur, you fell the knight in a single swing.")
+                    if True:
+                        print("Using your trusty sword, you fell the knight in a single swing.")
                         summer_scene.knight_is_alive = False
                         summer_scene.plains(summer_scene.first_plains_visit)
                     if not has_rexcalibur:
@@ -95,8 +95,9 @@ class summer_scene:
     def cave(first_visit):
         if first_visit:
             print("You arrive at the cave, and the first thing you notice is that it's strikingly dark, almost darker than it should be. You're certain you won't be able to navigate without a light. There are several old barrels lying around the outside, though they look to be filled with dirt and other refuse.")
-            summer_scene.cave_event_1()
             summer_scene.first_cave_visit = False
+            summer_scene.cave_event_1()
+
         else:
             print("You return to the cave entrance, curious what else it may be hiding.")
             summer_scene.cave_event_1()    
@@ -144,6 +145,7 @@ class summer_scene:
     def barn(first_visit):
         if first_visit:
             print("You arrive at the barn, and it looks more worn down up close. Despite this, it appears to be the only standing structure aside from the tower for miles. Miscellaneous supplies are strewn about outside, and the front door doesn't appear to be locked.")
+            summer_scene.first_barn_visit
         else:
             print("You arrive at the barn once more. You wonder if it looks even more worn down since you were here last.")
         summer_scene.barn_event_1(summer_scene.lied_at_barn)
