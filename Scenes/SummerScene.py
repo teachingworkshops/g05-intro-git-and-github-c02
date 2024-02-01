@@ -52,11 +52,11 @@ class summer_scene:
         if first_visit and knight_alive:
             print("You walk across the lengthy field and notice a figure approaching in the distance. As you get closer, you realize he's much larger than you first thought. A hulking titan wearing a menacing suit of armor. He lodges his greatsword in the ground and speaks: '" +MainCharacter.__name__+ "!', he exclaims, 'I cannot let you go any further.'\n")
             summer_scene.first_visit = False
-            summer_scene.plains_event_1()
+            summer_scene.plains_event_1(summer_scene.player_has_rexcalibur)
 
         elif knight_alive:
             print("The knight jeers at you and speaks: 'Returning once more after your cowardly retreat? What do you want?'")
-            summer_scene.plains_event_1()
+            summer_scene.plains_event_1(summer_scene.player_has_rexcalibur)
         else:
             print("With the Titanic Knight dead, the way to the tower == now clear.\n")
             summer_scene.plains_event_2()
@@ -118,7 +118,7 @@ class summer_scene:
             elif cave_choice == "2":
                 #ADD ITEM TO LOOT
                 print("You rummage for loot in the barrels, and most of them hold nothing of note. A glint catches your eye in one of them though, and you reach in to dig around for whatever it was. You feel something solid, and you pull your hand out to reveal a silver ring, with a purple gemstone encrested in it.")
-                summer_scene.cave()
+                summer_scene.cave(summer_scene.first_cave_visit)
             elif cave_choice == "m":
                 summer_scene.cave_map()
 
