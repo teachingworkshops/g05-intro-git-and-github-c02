@@ -253,7 +253,7 @@ class summer_scene:
 
     def tower_event_1():
         tower_choice = ""
-        tower_options = ["1","2","3"]
+        tower_options = ["1","2","3", "m"]
         while tower_choice not in tower_options:
             if summer_scene.player_has_ring:
                 print("What do you do?\n\nOPTIONS:\n1 - Touch the door\n2 - Walk away\n3 - Insert ring into the slot")
@@ -268,6 +268,8 @@ class summer_scene:
             elif map_choice == "3":
                 print("You place the ring into the slot, and it's a perfect fit. The door rumbles and slides open, dropping the ring on the ground. You pick it back up.")    
                 summer_scene.tower_event_2()
+            elif map_choice == "m":
+                summer_scene.tower_map()
 
     def tower_event_2():
         tower_choice = ""
