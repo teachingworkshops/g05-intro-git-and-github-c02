@@ -1,11 +1,11 @@
-from Scene_Locations.Locations import Location
+from Scene_Locations.Locations import Locations
 
 from Characters.Story_Character import StoryCharacter
 from Characters.Main_Character import MainCharacter
 
 from User_Objects.Weapon import Weapon
 
-class Forest(Location):
+class Forest(Locations):
     def __init__(self, name, great_pumpkin):
         self.name = name
         self.discovered = False

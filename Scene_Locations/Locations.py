@@ -1,6 +1,6 @@
 # Location class
 
-class Location:
+class Locations:
     def __init__(self, name: str, discovered: bool):
         self.name = name
         self.discovered = discovered

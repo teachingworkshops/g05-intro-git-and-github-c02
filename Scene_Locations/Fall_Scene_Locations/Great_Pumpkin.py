@@ -1,6 +1,6 @@
-from Scene_Locations.Locations import Location
+from Scene_Locations.Locations import Locations
 
-class Great_Pumpkin(Location):
+class Great_Pumpkin(Locations):
     def __init__(self, name):
         self.name = name
         self.discovered = False

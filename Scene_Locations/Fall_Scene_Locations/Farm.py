@@ -1,4 +1,4 @@
-from Scene_Locations.Locations import Location
+from Scene_Locations.Locations import Locations
 from User_Objects.Weapon import Weapon
 from User_Objects.Armor import Armor
 from User_Objects.Item import Item
@@ -22,7 +22,7 @@ CHEST_PLATE_VALUE = 50
 global CHEST_PLATE_PROTECTION_VALUE
 CHEST_PLATE_PROTECTION_VALUE = 75
 
-class Farm(Location):
+class Farm(Locations):
     def __init__(self, name):
         self.name = name
         self.discovered = False # Boolean
