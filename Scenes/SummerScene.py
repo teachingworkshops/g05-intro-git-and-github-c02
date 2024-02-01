@@ -71,7 +71,7 @@ class summer_scene:
                     if True:
                         print("Using your trusty sword, you fell the knight in a single swing.")
                         summer_scene.knight_is_alive = False
-                        summer_scene.plains(summer_scene.first_plains_visit)
+                        summer_scene.plains(summer_scene.first_plains_visit, summer_scene.knight_is_alive)
                     if not has_rexcalibur:
                         print("You try to go in for a swing, but the knight is too fast, and too strong. He swipes at you and cuts you clean in half.\n\nYOU HAVE DIED.")
 
@@ -314,7 +314,7 @@ class summer_scene:
             if map_choice == "1":
                 summer_scene.intro_choices()
             elif map_choice == "2":
-                summer_scene.plains(summer_scene.first_plains_visit)
+                summer_scene.plains(summer_scene.first_plains_visit, summer_scene.knight_is_alive)
             elif map_choice == "3":
                 summer_scene.cave(summer_scene.first_cave_visit)
 
@@ -327,7 +327,7 @@ class summer_scene:
             if map_choice == "1":
                 summer_scene.intro_choices()
             elif map_choice == "2":
-                summer_scene.plains(summer_scene.first_plains_visit)
+                summer_scene.plains(summer_scene.first_plains_visit,summer_scene.knight_is_alive)
             elif map_choice == "3":
                 summer_scene.barn(summer_scene.first_barn_visit)
     def tower_map():
@@ -339,6 +339,6 @@ class summer_scene:
             if map_choice == "1":
                 summer_scene.barn(summer_scene.first_barn_visit)
             elif map_choice == "2":
-                summer_scene.plains(summer_scene.first_plains_visit)
+                summer_scene.plains(summer_scene.first_plains_visit, summer_scene.knight_is_alive)
             elif map_choice == "3":
                 summer_scene.cave(summer_scene.first_cave_visit)
