@@ -199,7 +199,7 @@ class summer_scene:
                 summer_scene.barn_event_4()
             elif barn_choice == "2":
                 print("'Suit yourself,' the man says, closing the door once more.")
-                summer_scene.barn_event_1()
+                summer_scene.barn_event_1(summer_scene.lied_at_barn)
 
     def barn_event_4():
         barn_choice = ""
