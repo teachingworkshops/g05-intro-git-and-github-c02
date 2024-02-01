@@ -1,6 +1,6 @@
-from .Story_Character import story_character
+from Characters.Story_Character import StoryCharacter
 
-class Blacksmith_Character(story_character):
+class Blacksmith_Character(StoryCharacter):
     BSQ1, BSQ2, BSQ3, BSQ4 = False # blacksmith quesion
     lCrafter = False
     def __init__(self, name):
