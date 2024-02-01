@@ -8,18 +8,11 @@ from Characters.Main_Character import MainCharacter
 
 # Main function to run story game
 def main():
-    #while True:
+    print("Hello traveler!\n")
     traveler = MainCharacter(input("What is your name?\n"))
-    # Describe overall description and objective of the game
-    # Describe basic controls for the main character, 
-        # view objects in backpack, 
-        # how to move to different locations, 
-        # view amount of coins you have
-        # view map?
+    print("In this game you will be able to explore the 4 seasons and pick up items along to way to ultimately defeat the Timebro.\n")
 
-
-
-    print("Good luck, " +traveler.name+ ".")
+    print("Good luck, " +traveler.name+ ".\n")
     fall = fall_scene()
     fall.run_scene(traveler)
 
