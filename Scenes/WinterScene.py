@@ -11,9 +11,9 @@ from Characters.Blacksmith_Character import Blacksmith_Character
 
 class winter_scene:
     inspectedHut, inspectedLake, inspectedShipwreck, inspectedPort, inspectedVillage, inspectedHouse, inspectedGraveyard, inspectedCoin, inspectedCave = False, False, False, False, False, False, False, False, False
-    traveledHut, traveledLake, traveledVillage, traveledCave = False
-    skeletonFelled, zombieFelled, bossFelled = False
-    haveOre, haveSand, haveOil = False
+    traveledHut, traveledLake, traveledVillage, traveledCave = False, False, False, False
+    skeletonFelled, zombieFelled, bossFelled = False, False, False
+    haveOre, haveSand, haveOil = False, False, False
     obtainedLatern = False
     enteredCave = False
 
