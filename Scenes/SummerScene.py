@@ -160,13 +160,13 @@ class summer_scene:
             elif barn_choice == "2":
                 if lied:
                     print("You hear a voice inside again: 'Leave us alone, Johnny. You've already doomed us.'")
-                    summer_scene.barn_event_1()
+                    summer_scene.barn_event_1(summer_scene.lied_at_barn)
                 else:
                     print("You knock on the door, and after a long pause you eventually hear 'Who's there?!'. They sound irritated and anxious.")
                     summer_scene.barn_event_2()
             elif barn_choice == "3":
                 print("you rummage through the supplies, but find nothing of note.")
-                summer_scene.barn_event_1()
+                summer_scene.barn_event_1(summer_scene.lied_at_barn)
             elif barn_choice == "m":
                 summer_scene.barn_map()
 
