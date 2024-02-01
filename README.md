@@ -2,7 +2,7 @@
 
 _Created By Group C02: Jake Rausch, Justin Kim, Ian MacDougall, & Brandon Norris_
 
-*To run this game, downlaod the TaleOfTime zip, extract all, and run the 'Game_Test' Python File*
+*To play this game, run the Game_Test.exe file*
 
 ## Command to test code :
 ```bash
