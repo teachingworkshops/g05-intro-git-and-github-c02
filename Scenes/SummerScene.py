@@ -23,7 +23,7 @@ class summer_scene:
     # Initiates the opening of the Summer scene
     def run_scene(traveler: MainCharacter, first_visit):
         if first_visit:
-            print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside. You're enveloped by what feels like a wall of heat as you walk forward. This == the final realm. The final season before you reach Timebro. Summer.\n")
+            print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside. You're enveloped by what feels like a wall of heat as you walk forward. This is the final realm. The final season before you reach Timebro. Summer.\n")
             print("You can see Timebro's tower straight ahead, to the far North. You just need to get to him and this will all be over.")
             print("You see plains straight ahead, between you and the tower. You'll have to cross them to get to Timebro. To the East you see a gaping cave mouth. The insides are a mystery. To the far west, you can see an abandoned barn. Perhaps it can be looted.\n")
 
@@ -338,5 +338,3 @@ class summer_scene:
                 summer_scene.plains(summer_scene.first_plains_visit)
             elif map_choice == "3":
                 summer_scene.cave(summer_scene.first_cave_visit)
-
-    run_scene(MainCharacter,first_entrance_visit)

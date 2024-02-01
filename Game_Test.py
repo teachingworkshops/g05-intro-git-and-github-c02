@@ -23,7 +23,8 @@ def main():
     fall = fall_scene()
     fall.run_scene(traveler)
 
-    summer_scene.run_scene(traveler)
+    summer = summer_scene
+    summer.run_scene(traveler)
     # Add functions to run other scenes
 
 if __name__ == "__main__":
