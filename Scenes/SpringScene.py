@@ -126,7 +126,7 @@ class spring_scene():
 
     def forest_scene():
         if spring_scene.count == 0:
-            print("enchanted forest")
+            print("The enchanted forest is filled with beauty. But you have a strange feeling about this place.")
 
         while True:
             if spring_scene.investigated_forest:
@@ -140,22 +140,22 @@ class spring_scene():
             if action == 'i':
                 if spring_scene.count >= 3:
                     spring_scene.investigated_forest = True
-                    print("you found a shiny light")
+                    print("A shiny light appeared! Perhaps there is something there...")
                 else:
-                    print("there seems to be nothing around. looks like i can keep going.")
+                    print("There seems to be nothing around. It looks like you can keep going.")
             elif action == 't':
                 break
             elif spring_scene.count >= 3 and action == 'l':
                 if not spring_scene.found_key:
                     spring_scene.found_key = True
-                    print("you found a key")
+                    print("You found a key! Wonder what that is for...")
                 else:
-                    print("nothing else in the light")
+                    print("There is nothing else in the light.")
             else:
-                print("action not known")
+                print("This action is not known.")
 
         while True:
-            print("where would you like to go?\nOPTIONS: Deeper into the Enchanted Forest(e), Abandoned House(h), Magical Fields(f)")
+            print("Where would you like to go?\nOPTIONS: Deeper into the Enchanted Forest(e), Abandoned House(h), Magical Fields(f)")
             dest = input()
             print()
 
@@ -171,12 +171,12 @@ class spring_scene():
                 spring_scene.field_scene()
                 break
             else:
-                print('invalid input')
+                print('This place is not known.')
 
     investigated_house = False
 
     def house_scene():
-        print("abandoned house")
+        print("The old wooden house looks like it has been abandoned for years. There is debris everywhere.")
 
         while True:
             if spring_scene.investigated_house:
@@ -190,25 +190,25 @@ class spring_scene():
             if action == 'i':
                 if not spring_scene.investigated_house:
                     spring_scene.investigated_house = True
-                    print("you found a chest with a lock")
+                    print("You found a chest! But it is locked... I need a key inorder to open it.")
                 else:
-                    print("nothing new")
+                    print("There is nothing new.")
                 
             elif action == 't':
                 break
             elif action == 'c':
                 if spring_scene.found_key and not spring_scene.second_part:
                     spring_scene.second_part = True
-                    print("you opened the chest and found the second part")
+                    print("You opened the chest and found the second piece of the spell!")
                 elif spring_scene.second_part:
-                    print("nothing else in the chest")
+                    print("There is nothing else in the chest.")
                 else:
                     print("Hmm... seems like I need a key to open the chest.")
             else:
-                print("action not known")
+                print("This action is not known.")
 
         while True:
-            print("where would you like to go?\nOPTIONS: Enchanted Forest(e)")
+            print("Where would you like to go?\nOPTIONS: Enchanted Forest(e)")
             dest = input()
             print()
 
@@ -216,14 +216,19 @@ class spring_scene():
                 spring_scene.forest_scene()
                 break
             else:
-                print("invalid input")
+                print("This place is unknown.")
 
     investigated_garden = False
     has_shovel = False
     
     def garden_scene():
-        print("garden of flowers")
 
+        if not spring_scene.third_part:
+            print("The garden is filled with blooming flowers of all sizes and colors. Some of them are singing and dancing,")
+            print("but there are some that are stuck.")
+        else:
+            print("The garden is filled with blooming flowers of all sizes and colors. All of them singing and dancing in harmony")
+            
         while True:
             if spring_scene.investigated_garden:
                 print("What would you like to do?\nInvestigate(i), Travel(t), Dig Pile of Dirt(d)")
@@ -236,27 +241,27 @@ class spring_scene():
             if action == 'i':
                 if not spring_scene.investigated_garden:
                     spring_scene.investigated_garden = True
-                    print("found a pile of dirt and there seems to be a shed here.")
+                    print("There seems to be a pile of strange dirt, and there seems to be a shed here too.")
                 else:
-                    print("nothing new")
+                    print("There is nothing new.")
             elif action == 't':
                 break
             elif action == 'd':
                 if spring_scene.has_shovel and not spring_scene.third_part:
                     spring_scene.third_part = True
-                    print("found the third part")
+                    print("You dig up the strange dirt with the shovel and found the third piece of the spell!")
                 elif spring_scene.third_part:
-                    print("nothing else to dig")
+                    print("There is nothing else to dig.")
                 else:
-                    print("cant dig the dirt pile. i need a tool to dig it up")
+                    print("You can't dig the strange dirt. Looks like you need a tool to help you.")
             else:
-                print("invalid action")
+                print("This action is not known.")
 
         while True:
             if spring_scene.investigated_garden:
-                print("where would you like to go?\nOPTIONS: Shed(s), Magical Fields(f)")
+                print("Where would you like to go?\nOPTIONS: Shed(s), Magical Fields(f)")
             else:
-                print("where would you like to go?\nOPTIONS: Magical Fields(f)")
+                print("Where would you like to go?\nOPTIONS: Magical Fields(f)")
             dest = input()
             print()
 
@@ -267,11 +272,11 @@ class spring_scene():
                 spring_scene.shed_scene()
                 break
             else:
-                print("invalid option")
+                print("This place is not known.")
 
     investigated_shed = False
     def shed_scene():
-        print("inside shed")
+        print("The shed is filled with old and rusted tools. Surely these weren't used for this garden...")
 
         while True:
             if spring_scene.investigated_shed and not spring_scene.has_shovel:
@@ -285,17 +290,19 @@ class spring_scene():
             if action == 'i':
                 if not spring_scene.investigated_shed:
                     spring_scene.investigated_shed = True
-                    print("found a rusty shovel that looks like itll break")
+                    print("You found a rusty shovel, but it looks like it will break at a single touch.")
                 else:
-                    print("nothing new")
+                    print("There is nothing new.")
             elif action == 't':
                 break
             elif spring_scene.investigated_shed and action == 's':
                 spring_scene.has_shovel = True
-                print("pick up shovel and it turned brand new")
+                print("You pick up the rusty shovel, and it transfoms into an elegant and shiny shovel!")
+            else:
+                print("This action is not known.")
         
         while True:
-            print("where would you like to go?\nOPTIONS: Flower Garden(g)")
+            print("Where would you like to go?\nOPTIONS: Flower Garden(g)")
 
             dest = input()
             print()
@@ -304,7 +311,8 @@ class spring_scene():
                 spring_scene.garden_scene()
                 break
             else:
-                print("invalid option") 
+                print("This place is not known.") 
         
     def ending_scene():
-        print("")
+        print("The spell brings the wall of vines down. You see the next challenge you must face. You move forward knowing")
+        print("what has to be done.")
