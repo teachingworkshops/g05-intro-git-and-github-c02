@@ -16,11 +16,11 @@ def main():
     print("In this game you will be able to explore the 4 seasons and pick up items along to way to ultimately defeat the Timebro.\n")
 
     print("Good luck, " +traveler.name+ ".\n")
-    fall = fall_scene()
-    fall.run_scene(traveler)
+    #fall = fall_scene()
+    #fall.run_scene(traveler)
 
     winter = winter_scene()
-    winter.run_scene()
+    winter.run_scene(traveler)
 
     spring = spring_scene()
     spring.run_scene()

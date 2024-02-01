@@ -10,15 +10,15 @@ from Characters.Blacksmith_Character import Blacksmith_Character
 
 
 class winter_scene:
-    inspectedHut, inspectedLake, inspectedShipwreck, inspectedPort, inspectedVillage, inspectedHouse, inspectedGraveyard, inspectedCoin, inspectedCave = False
-    traveledHut, traveledLake, traveledVillage, traveledCave = False
-    skeletonFelled, zombieFelled, bossFelled = False
-    haveOre, haveSand, haveOil = False
+    inspectedHut, inspectedLake, inspectedShipwreck, inspectedPort, inspectedVillage, inspectedHouse, inspectedGraveyard, inspectedCoin, inspectedCave = False, False, False, False, False, False, False, False, False
+    traveledHut, traveledLake, traveledVillage, traveledCave = False, False, False, False
+    skeletonFelled, zombieFelled, bossFelled = False, False, False
+    haveOre, haveSand, haveOil = False, False, False
     obtainedLatern = False
     enteredCave = False
 
 
-    def run_scene(traveler: MainCharacter): # intro
+    def run_scene(self, traveler: MainCharacter): # intro
         print("As you rush down the path, the snow seems to be unleashing a heavy flurry apon you.\nHowever you spot a light in the distance. As you close in you see the light is coming from a old circular hut made of jointed stone with a roof of tightly knitted hay.\n")
         print("Due to the cold, you walk through the door wihtout a second thought. You first see a blacksmith working away on a anvil, sparks causing a bright light and skrieking sound.\nYou then spot a familier merchant on the other side of the hut. The blacksmith the yells out directed towards you.\n")
         # incentive
@@ -27,7 +27,7 @@ class winter_scene:
         print("The iron and sand for one should be at the old lake, however, I think you'll need an oil wick. That should be in what's left of the village.\n")
         winter_scene.hut_decision(traveler)
 
-
+    # travel scene functions
     def travelTo(traveler, currentLocation): # h = hut, l = lake, v = village, c = cave
         if(currentLocation=='h'):
             print("Where do you want to go:\n1 "+("*"if winter_scene.traveledLake else"-")+(" Frozen Lake"if winter_scene.traveledLake else" Old Lake")+"\n2 "+("*"if winter_scene.traveledVillage else"-")+" Village\n3 "+("*"if winter_scene.traveledCave else"-")+" Frostbitten Cavern\n")
@@ -40,12 +40,12 @@ class winter_scene:
                 winter_scene.village_scene(traveler, winter_scene.traveledVillage)
             elif(decision==3):
                 print("\n")
-                winter_scene.village_scene(traveler, winter_scene.traveledCave)
+                winter_scene.cave_scene(traveler, winter_scene.traveledCave)
             else:
                 print("\nSadly you can't do that\n")
                 winter_scene.travelTo(traveler, 'h')
         if(currentLocation=='l'):
-            print("Where do you want to go:\n1 "+("*"if winter_scene.traveledLake else"-")+" Blacksmith's hut\n2 "+("*"if winter_scene.traveledVillage else"-")+" Village\n3 "+("*"if winter_scene.traveledCave else"-")+" Frostbitten Cavern\n")
+            print("Where do you want to go:\n1 "+("*"if winter_scene.traveledHut else"-")+" Blacksmith's hut\n2 "+("*"if winter_scene.traveledVillage else"-")+" Village\n3 "+("*"if winter_scene.traveledCave else"-")+" Frostbitten Cavern\n")
             decision = int( input("User: ") )
             if(decision==1):
                 print("\n")
@@ -55,7 +55,7 @@ class winter_scene:
                 winter_scene.village_scene(traveler, winter_scene.traveledVillage)
             elif(decision==3):
                 print("\n")
-                winter_scene.village_scene(traveler, winter_scene.traveledCave)
+                winter_scene.cave_scene(traveler, winter_scene.traveledCave)
             else:
                 print("\nSadly you can't do that\n")
                 winter_scene.travelTo(traveler, 'l')
@@ -67,33 +67,33 @@ class winter_scene:
                 winter_scene.hut_scene(traveler, False)
             elif(decision==2):
                 print("\n")
-                winter_scene.village_scene(traveler, winter_scene.traveledVillage)
+                winter_scene.lake_scene(traveler, winter_scene.traveledLake)
             elif(decision==3):
                 print("\n")
-                winter_scene.village_scene(traveler, winter_scene.traveledCave)
+                winter_scene.cave_scene(traveler, winter_scene.traveledCave)
             else:
                 print("\nSadly you can't do that\n")
                 winter_scene.travelTo(traveler, 'v')
         if(currentLocation=='c'):
-            print("Where do you want to go:\n1 "+("*"if winter_scene.traveledHut else"-")+" Blacksmith's hut\n2 "+("*"if winter_scene.traveledLake else"-")+(" Frozen Lake"if winter_scene.traveledLake else" Old Lake")+"\n3 "+("*"if winter_scene.traveledVillage else"-")+" Frostbitten Cavern\n")
+            print("Where do you want to go:\n1 "+("*"if winter_scene.traveledHut else"-")+" Blacksmith's hut\n2 "+("*"if winter_scene.traveledLake else"-")+(" Frozen Lake"if winter_scene.traveledLake else" Old Lake")+"\n3 "+("*"if winter_scene.traveledVillage else"-")+" Villagen\n")
             decision = int( input("User: ") )
             if(decision==1):
                 print("\n")
-                winter_scene.lake_scene(traveler, winter_scene.traveledLake)
+                winter_scene.hut_scene(traveler, False)
             elif(decision==2):
                 print("\n")
-                winter_scene.village_scene(traveler, winter_scene.traveledVillage)
+                winter_scene.lake_scene(traveler, winter_scene.traveledLake)
             elif(decision==3):
                 print("\n")
-                winter_scene.village_scene(traveler, winter_scene.traveledCave)
+                winter_scene.village_scene(traveler, winter_scene.traveledVillage)
             else:
                 print("\nSadly you can't do that\n")
                 winter_scene.travelTo(traveler, 'c')
         
-
+    # merchant scene
     def merchant_scene(traveler):
         # Creates items for the character to buy
-        steelSwaord = Weapon("Steel Sword", "A weapon that deals damage to enemies.", True, 35, 50)
+        steelSwaord = Weapon("Steel Sword", "A weapon that deals damage to enemies.", True, 40, 50)
         helmet = Armor("Helmet", "Adds protection to any danger that approaches", True, 35, "head", 50)
         chestplate = Armor("Chestplate", "Adds protection to any danger that approaches", True, 50, "head", 75)
 
@@ -104,7 +104,7 @@ class winter_scene:
         print(f"\nMain character's backpack: {traveler.backpack.backpack_storage}\n")
         print(f"Main character's coin storage: {traveler.coin_storage} coins\n")
 
-
+    # functions for the hut scene
     def hut_scene(traveler, unconscious):
         if(unconscious):
             print("The Blacksmith sees that you are awake and smiles.\nGlad you're back on your feet.\n")
@@ -117,6 +117,7 @@ class winter_scene:
         decision = int( input("User: ") )
         if(decision==1):
             print("\nYou look around the small hut. On one side there is a small bed amd a hardy, wooden table. On the other is a small forge with a clearly used anvil next to it. The heat from the forge while hot left a happy,fuzzy feeling compared to the blistering cold outside.\n")
+            winter_scene.hut_decision(traveler)
         elif(decision==2):
             blacksmith = Blacksmith_Character("Blacksmith")
             print("\n")
@@ -125,6 +126,7 @@ class winter_scene:
         elif(decision==3):
             print("\n")     
             winter_scene.merchant_scene(traveler)
+            winter_scene.hut_decision(traveler)
         elif(decision==4):
             print("\n")
             winter_scene.travelTo(traveler, 'h')
@@ -132,19 +134,22 @@ class winter_scene:
             print("\nSadly you can't do that\n")
             winter_scene.hut_decision(traveler)
 
-
+    # enemy fight scene
     def enemy_fight(traveler, enemy_name, enemy_health):
-        print("The "+(enemy_name)+" with "+(enemy_health)+" health points, has challenged you to a battle.\n")
+        print("The "+(enemy_name)+" with "+(str(enemy_health))+" health points, has challenged you to a battle.\n")
 
         if traveler.get_weapon()[1] < enemy_health :
             print("You lost the battle with the "+(enemy_name)+". You wake up at the Blacksmith's hut.\n")
             winter_scene.hut_scene(traveler, True)
+            return False
         else:
             print("Congratulations, you beat the "+(enemy_name)+"!\nYou are awarded with 20 gold.\n")
             winter_scene.skeletonFelled=True
             traveler.coin_storage+=20
+            return True
 
 
+    # functions for the lake scene
     def lake_scene(traveler, firstTime):
         if(firstTime):
             winter_scene.traveledLake=True
@@ -160,12 +165,16 @@ class winter_scene:
             winter_scene.inspectedShipwreck=True
             print("\n")     # inspect shipwreck
             winter_scene.inspect_shipwreck(traveler)
+            winter_scene.lake_decision(traveler)
         elif(decision==2):
             winter_scene.inspectedPort=True
-            print("\n")     # inspect port
+            print("\n")     
+            winter_scene.inspect_port(traveler)
+            winter_scene.lake_decision(traveler)
         elif(decision==3):
             winter_scene.inspectedLake=True
-            print("\n")     # inspect lake
+            print("\nThe Lake looks completely frozen\nIt looks like a white desest with gusts of snow instead of sand.\n")
+            winter_scene.lake_decision(traveler)
         elif(decision==4):
             print("\n")
             winter_scene.travelTo(traveler, 'l')
@@ -178,17 +187,15 @@ class winter_scene:
 
         if(not winter_scene.skeletonFelled):
             print(", however, as you do a skeleton lunges towards you.\n")
-            winter_scene.enemy_fight("Skeleton", 30)
-            winter_scene.skeletonFelled=True
+            winter_scene.skeletonFelled=winter_scene.enemy_fight(traveler,"Skeleton", 30)
         else:
             print(".\n")
         
-        if not winter_scene.haveOre:
+        if not winter_scene.haveOre & winter_scene.skeletonFelled:
             print("After defeating the Skeleton, you journy on. And as you enter the Captain's Quarter, you notice a rock in the middle of the captain's desk.\nYou pick it up, it seems to be Iron. Good for the latern.\n")
+            print("With not much else there to do you leave the ship.\n")
+            winter_scene.lake_decision(traveler)
         
-        print("With not much else there to do you leave the ship.\n")
-        winter_scene.lake_decision(traveler)
-
     def inspect_port(traveler):
         print("The port was small. Seemed to only be a small fishing port with some broken barrels and ripped net frozen to the ice and it's deck.\nIt's calm here. ")
         if not winter_scene.haveSand:
@@ -197,6 +204,7 @@ class winter_scene:
             print("\n")
 
 
+    # functions for the village scene
     def village_scene(traveler, firstTime):
         if firstTime:
             winter_scene.traveledVillage=True
@@ -210,7 +218,8 @@ class winter_scene:
         decision=int( input("User: "))
         if(decision==1):
             print("\n")     
-            winter_scene.inspect_house()
+            winter_scene.inspect_house(traveler)
+            winter_scene.village_decision(traveler)
         elif(decision==2):
             winter_scene.inspectedGraveyard=True
             if(not winter_scene.inspectedCoin):
@@ -228,7 +237,8 @@ class winter_scene:
                 print("\nThere were a few piles of black, with specs of brown, rubble evenly space out from one another. While each covered in a layer snow, it was clear this debris were homes or houses.\nThere are flowers on the ground.\n")
                 winter_scene.village_decision(traveler)
         elif(decision==3):
-            print("\n")
+            print("\nThe village was nothing more than rubble. The houses were all burnt but also frozen over.\nIt is clear something bad happened here.\n")
+            winter_scene.village_decision(traveler)
         elif(decision==4):
             print("\n")
             winter_scene.travelTo(traveler, 'v')
@@ -241,27 +251,30 @@ class winter_scene:
              
         if not winter_scene.zombieFelled:
             print(" As you walk in a zombie walks dives at you. Luckly you're able to avoid its attack but must fight back.\n")
-            winter_scene.enemy_fight("Zombie", 35)
-            winter_scene.zombieFelled=True
+            winter_scene.zombieFelled=winter_scene.enemy_fight(traveler,"Zombie", 35)
         
-        if not winter_scene.haveOil:
+        if not winter_scene.haveOil & winter_scene.zombieFelled:
             print("After defeating the Zombie, you journy on. You see something on the dinner table. It's a peice of oil paper.\nPerfect for lighting the Latern.\n")
             winter_scene.haveOil=True
+            print("With not much else there to do you leave the house.\n")
+            winter_scene.village_decision(traveler)
         
-        print("With not much else there to do you leave the house.\n")
-        winter_scene.village_decision(traveler)
 
-
+    # functions for the cave scene
     def cave_scene(traveler, firstTime):
         if firstTime:
             print("You walk up to the cave. The mouth of the cave is covered in ice and feels as a colder blast of air emits from it.\n")
-            winter_scene.cave_decision(traveler)
+        else:
+            print("You walk towards tha cave ready for what will happen.\n")
+        winter_scene.cave_decision(traveler)
+        
 
     def cave_decision(traveler):
         print("What do you want to do:\n1 "+("*"if winter_scene.inspectedShipwreck else"-")+" Inspect Cave\n2 "+("*"if winter_scene.inspectedPort else"-")+" Enter Cave\n3 - Travel\n")
         decision=int( input("User: ") )
         if(decision==1):
             print("\nThe cave looked like a dark blue. It felt sharp, as if the ice on its was was reaching out to you.\n")
+            winter_scene.cave_decision(traveler)
         elif(decision==2):
             print("\n") 
             if(winter_scene.obtainedLatern):
