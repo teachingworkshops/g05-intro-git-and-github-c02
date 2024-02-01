@@ -16,4 +16,9 @@ class Weapon(Item):
         # Child class of item, can reference item attributes and functions
         super().__init__(name, self.description, can_sell, cost_value)
 
+    def get_name(self):
+        return self.name
+    
+    def get_damage(self):
+        return self.damage
 

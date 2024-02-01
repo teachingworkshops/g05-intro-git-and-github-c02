@@ -2,6 +2,7 @@
 from .Main_Character import MainCharacter
 from User_Objects.Backpack import Backpack
 from User_Objects.Armor import Armor
+from User_Objects.Weapon import Weapon
 
 # Merchant can sell items
 # Do we want the ability to sell items to the merchant?
@@ -113,6 +114,8 @@ class Merchant:
                         elif type(item) == Armor:
                             # Updates the armor the player has and it's health points
                             main_character.update_health_points(item)
+                        elif type(item) == Weapon:
+                            main_character.update_weapon(item)
                         else: 
                             # Adds the bought item to the character's backpack
                             main_character.backpack.backpack_storage.append(item)

@@ -20,8 +20,10 @@ class MainCharacter:
             "head": "", 
             "chest": "", 
             "leg": "",
-            "boot": ""   
+            "boot": "" 
             }
+        
+        self.weapon = ("none", 0)
     
     # Updates the number of the health points the player has based on the added armor
     def update_health_points(self, new_armor):
@@ -33,3 +35,9 @@ class MainCharacter:
 
         # Updates the health points with the new armor
         self.health_points = self.health_points + self.armor_dict[new_armor.armor_type].protection_value
+
+    def update_weapon(self, new_weapon):
+        self.weapon=(new_weapon.get_name(), new_weapon.get_damage())
+
+    def get_weapon(self):
+        return self.weapon
