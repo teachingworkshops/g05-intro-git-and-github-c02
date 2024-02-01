@@ -174,7 +174,7 @@ class summer_scene:
         barn_choice = ""
         barn_options = ["1","2"]
         while barn_choice not in barn_options:
-            print("What do you say?\n\nOPTIONS:\n1 - "+MainCharacter.name+"\n2 - Timebro")
+            print("What do you say?\n\nOPTIONS:\n1 - Jeff\n2 - Timebro")
             barn_choice = input()
             if barn_choice == "1":
                 print("There's another pause. 'Haven't heard that name before. You must be another survivor. Here, let me get the door for ya.' You hear a sliding sound, and then the door opens to reveal a man in ragged clothing. He gestures inside.")
