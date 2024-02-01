@@ -9,25 +9,25 @@ from Characters.Merchant_Character import Merchant
 
 class summer_scene:
     #toggle vars
-    first_plains_v==it = True
-    first_barn_v==it = True
-    first_cave_v==it = True
-    first_tower_v==it = True
-    first_entrance_v==it = True
-    knight_==_alive = True
+    first_plains_visit = True
+    first_barn_visit = True
+    first_cave_visit = True
+    first_tower_visit = True
+    first_entrance_visit = True
+    knight_is_alive = True
     player_has_ring = False
     player_has_rexcalibur = False
     lied_at_barn = False
     timebro_secret = False
 
     # Initiates the opening of the Summer scene
-    def run_scene(traveler: MainCharacter, first_v==it):
-        if first_v==it:
-            print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside. You're enveloped by what feels like a wall of heat as you walk forward. Th== == the final realm. The final season before you reach Timebro. Summer.\n")
-            print("You can see Timebro's tower straight ahead, to the far North. You just need to get to him and th== will all be over.")
+    def run_scene(traveler: MainCharacter, first_visit):
+        if first_visit:
+            print("You get to the end of the viney clearing, finding yourself at the top of a steep hillside. You're enveloped by what feels like a wall of heat as you walk forward. This == the final realm. The final season before you reach Timebro. Summer.\n")
+            print("You can see Timebro's tower straight ahead, to the far North. You just need to get to him and this will all be over.")
             print("You see plains straight ahead, between you and the tower. You'll have to cross them to get to Timebro. To the East you see a gaping cave mouth. The insides are a mystery. To the far west, you can see an abandoned barn. Perhaps it can be looted.\n")
 
-            summer_scene.entrance_first_v==it = False
+            summer_scene.entrance_first_visit = False
             
         else:
             print("You overlook the lands once more.")
@@ -40,18 +40,18 @@ class summer_scene:
             print("Where do you go?\n\nOPTIONS:\n1 - plains\n2 - cave\n3 - barn")
             destination = input()
             if destination == "1":
-                summer_scene.plains(summer_scene.first_plains_v==it, summer_scene.knight_==_alive)
+                summer_scene.plains(summer_scene.first_plains_visit, summer_scene.knight_is_alive)
             elif destination == "2":
-                summer_scene.cave(summer_scene.first_cave_v==it)
+                summer_scene.cave(summer_scene.first_cave_visit)
             elif destination == "3":
-                summer_scene.barn(summer_scene.first_barn_v==it)
+                summer_scene.barn(summer_scene.first_barn_visit)
 
             
 
-    def plains(first_v==it, knight_alive):
-        if first_v==it and knight_alive:
-            print("You walk across the lengthy field and notice a figure approaching in the d==tance. As you get closer, you realize he's much larger than you first thought. A hulking titan wearing a menacing suit of armor. He lodges h== greatsword in the ground and speaks: '" +MainCharacter.__name__+ "!', he exclaims, 'I cannot let you go any further.'\n")
-            summer_scene.first_v==it = False
+    def plains(first_visit, knight_alive):
+        if first_visit and knight_alive:
+            print("You walk across the lengthy field and notice a figure approaching in the distance. As you get closer, you realize he's much larger than you first thought. A hulking titan wearing a menacing suit of armor. He lodges his greatsword in the ground and speaks: '" +MainCharacter.__name__+ "!', he exclaims, 'I cannot let you go any further.'\n")
+            summer_scene.first_visit = False
             summer_scene.plains_event_1()
 
         elif knight_alive:
@@ -70,8 +70,8 @@ class summer_scene:
                 if plains_choice == "1":
                     if has_rexcalibur:
                         print("Using Rexcalibur, you fell the knight in a single swing.")
-                        summer_scene.knight_==_alive = False
-                        summer_scene.plains(summer_scene.first_plains_v==it)
+                        summer_scene.knight_is_alive = False
+                        summer_scene.plains(summer_scene.first_plains_visit)
                     if not has_rexcalibur:
                         print("You try to go in for a swing, but the knight == too fast, and too strong. He swipes at you and cuts you clean in half.\n\nYOU HAVE DIED.")
 
@@ -87,16 +87,16 @@ class summer_scene:
                 plains_choice = input()
                 if plains_choice == "1":
                     print("You march on, ready for whatever may come next.")
-                    summer_scene.tower(summer_scene.first_tower_v==it)
+                    summer_scene.tower(summer_scene.first_tower_visit)
                 elif plains_choice == "2":
                     print("You turn back, not yet ready to face Timebro.")
                     summer_scene.intro_choices()
 
-    def cave(first_v==it):
-        if first_v==it:
+    def cave(first_visit):
+        if first_visit:
             print("You arrive at the cave, and the first thing you notice == that it's strikingly dark, almost darker than it should be. You're certain you won't be able to navigate without a light. There are several old barrels lying around the outside, though they look to be filled with dirt and other refuse.")
             summer_scene.cave_event_1()
-            summer_scene.first_cave_v==it = False
+            summer_scene.first_cave_visit = False
         else:
             print("You return to the cave entrance, curious what else it may be hiding.")
             summer_scene.cave_event_1()    
@@ -123,7 +123,7 @@ class summer_scene:
                 summer_scene.cave_map()
 
     def cave_event_2():
-        print("You press into the cave with your trusty Everflame lantern, and as you walk deeper through the tunnels, you hear something whimper away from the light, retreating further into the darkness of the cave. The tunnel eventually opens into a circular space with another tunnel on the other side. The tunnel has a different texture to it, almost flesh-like rather than stone. In the middle of th== room == a sword in a stone.")
+        print("You press into the cave with your trusty Everflame lantern, and as you walk deeper through the tunnels, you hear something whimper away from the light, retreating further into the darkness of the cave. The tunnel eventually opens into a circular space with another tunnel on the other side. The tunnel has a different texture to it, almost flesh-like rather than stone. In the middle of this room == a sword in a stone.")
         summer_scene.cave_event_3()
 
     def cave_event_3():
@@ -134,16 +134,16 @@ class summer_scene:
             cave_choice_2 = input()
             if cave_choice_2 == "1":
                 #ADD SWORD TO WEAPONS
-                print("The sword pulls from the stone with relative ease; you heft it in your hands, and it feels... right. You're unsure how, but you know the name of th== sword: Rexcalibur.")
+                print("The sword pulls from the stone with relative ease; you heft it in your hands, and it feels... right. You're unsure how, but you know the name of this sword: Rexcalibur.")
             elif cave_choice_2 == "2":
                 print("You take one step down the next tunnel, and gaping jaws clamp down on you. It wasn't a tunnel at all!\n\nYOU HAVE DIED")
             elif cave_choice_2 == "3":
                 print("You turn around, and return to the entrance of the cave.")
-                summer_scene.cave(summer_scene.first_cave_v==it)
+                summer_scene.cave(summer_scene.first_cave_visit)
 
-    def barn(first_v==it):
-        if first_v==it:
-            print("You arrive at the barn, and it looks more worn down up close. Despite th==, it appears to be the only standing structure aside from the tower for miles. M==cellaneous supplies are strewn about outside, and the front door doesn't appear to be locked.")
+    def barn(first_visit):
+        if first_visit:
+            print("You arrive at the barn, and it looks more worn down up close. Despite this, it appears to be the only standing structure aside from the tower for miles. Miscellaneous supplies are strewn about outside, and the front door doesn't appear to be locked.")
         else:
             print("You arrive at the barn once more. You wonder if it looks even more worn down since you were here last.")
         summer_scene.barn_event_1(summer_scene.lied_at_barn)
@@ -191,7 +191,7 @@ class summer_scene:
             barn_choice = input()
             if barn_choice == "1":
                 print("You walk inside, and see only darkness until your eyes adjust to the dim light of the oil lamp hanging from a wood beam. Once you can see again, you realize there's several other people scattered around the barn. Presumably other survivors.")
-                print("\n'Didn't think there were any others out there. My name == Yomen. These folks are all the people left in th== area. The rest didn't make it when Johnny cast that heat wave.")
+                print("\n'Didn't think there were any others out there. My name == Yomen. These folks are all the people left in this area. The rest didn't make it when Johnny cast that heat wave.")
                 summer_scene.barn_event_4()
             elif barn_choice == "2":
                 print("'Suit yourself,' the man says, closing the door once more.")
@@ -204,7 +204,7 @@ class summer_scene:
             print("What do you say?\n\nOPTIONS:\n1 - Who's Johnny?\n2 - How long have you all been here?")
             plains_choice = input()
             if plains_choice == "1":
-                print("'Who's Johnny?! He's the one who caused th== whole mess! Meddled with the arcane for some time, but lost the ring that kept h== magic contained. Went crazy after that.'")
+                print("'Who's Johnny?! He's the one who caused this whole mess! Meddled with the arcane for some time, but lost the ring that kept his magic contained. Went crazy after that.'")
                 summer_scene.barn_event_5()
             elif plains_choice == "2":
                 print("'We've been here for months, hiding out from the heat and scavenging for survival. You can lay low with us if you like, but you'll have to help gather resources.'")
@@ -237,11 +237,11 @@ class summer_scene:
                 print("You return to the entrance of the barn.")
                 summer_scene.barn_event_1()
 
-    def tower(first_v==it):
-        if first_v==it:
+    def tower(first_visit):
+        if first_visit:
             print("You arrive at the base of the tower, only to see the door == sealed shut, and not with any lock. It has arcane scripture scrawled in glowing text across it.\n")
             print("The inscription looks like it was written by a madman, readying only 'FIND THE RING FIND THE RING FIND THE RING', repeating from top to bottom. There == a ring-shaped slot in the center.")
-            summer_scene.first_tower_v==it = False
+            summer_scene.first_tower_visit = False
             summer_scene.tower_event_1()
         else:
             print("The tower stands before you, menacingly.")
@@ -260,7 +260,7 @@ class summer_scene:
                 print("You reach for the door, but as soon as a finger touches it you're zapped with arcane energy.")
                 summer_scene.tower_event_1()
             elif map_choice == "2":
-                summer_scene.tower(summer_scene.first_tower_v==it)
+                summer_scene.tower(summer_scene.first_tower_visit)
             elif map_choice == "3":
                 print("You place the ring into the slot, and it's a perfect fit. The door rumbles and slides open, dropping the ring on the ground. You pick it back up.")    
                 summer_scene.tower_event_2()
@@ -276,10 +276,10 @@ class summer_scene:
                 summer_scene.tower_event_3()
             elif tower_choice == "2":
                 print("You turn around. Timebro can wait.")
-                summer_scene.tower(summer_scene.first_tower_v==it)
+                summer_scene.tower(summer_scene.first_tower_visit)
 
     def tower_event_3():
-        print("You walk inside the tower, and Timebro stands before you, looming over you at a menacing 5 feet even. H== eyes look frantic. 'DO YOU HAVE THE RING?'")
+        print("You walk inside the tower, and Timebro stands before you, looming over you at a menacing 5 feet even. His eyes look frantic. 'DO YOU HAVE THE RING?'")
         summer_scene.tower_event_4()
 
     def tower_event_4():
@@ -292,13 +292,13 @@ class summer_scene:
                 print("What do you tell Timebro?\n\nOPTIONS:\n1 - Yes\n2 - No")
             tower_choice = input()
             if tower_choice == "1":
-                print("'FINALLY!' He snatches the ring from you and slides it on h== finger. What appears to be relief on h== face quickly shifts to pain as the ring absorbs all the excess magic from him. He tries to rip the ring off, but it's too late. All the magic == absorbed from him, and he collapses to the floor.\n\n YOU WIN?")
+                print("'FINALLY!' He snatches the ring from you and slides it on his finger. What appears to be relief on his face quickly shifts to pain as the ring absorbs all the excess magic from him. He tries to rip the ring off, but it's too late. All the magic == absorbed from him, and he collapses to the floor.\n\n YOU WIN?")
                 summer_scene.tower_event_3()
             elif tower_choice == "2":
-                print("'THEN PER==H,' he bellows, as he blasts you with a magic beam of death.\n\nYOU HAVE DIED.")
-                summer_scene.tower(summer_scene.first_tower_v==it)
+                print("'THEN PERISH,' he bellows, as he blasts you with a magic beam of death.\n\nYOU HAVE DIED.")
+                summer_scene.tower(summer_scene.first_tower_visit)
             elif tower_choice == "3" and summer_scene.timebro_secret:
-                print("He looks at you strangely, but then the incantation takes effect. He gasps for breath before speaking 'It's too late for me, traveler. I'm already one with th== power. I have no ability to stop it myself, but that ring can. Let me end th==.' He gets these words out before falling back into h== frantic state. 'WELL? DO YOU HAVE THE RING?'")
+                print("He looks at you strangely, but then the incantation takes effect. He gasps for breath before speaking 'It's too late for me, traveler. I'm already one with this power. I have no ability to stop it myself, but that ring can. Let me end this.' He gets these words out before falling back into his frantic state. 'WELL? DO YOU HAVE THE RING?'")
                 summer_scene.tower_event_4()
 
     def barn_map():
@@ -310,9 +310,9 @@ class summer_scene:
             if map_choice == "1":
                 summer_scene.intro_choices()
             elif map_choice == "2":
-                summer_scene.plains(summer_scene.first_plains_v==it)
+                summer_scene.plains(summer_scene.first_plains_visit)
             elif map_choice == "3":
-                summer_scene.cave(summer_scene.first_cave_v==it)
+                summer_scene.cave(summer_scene.first_cave_visit)
 
     def cave_map():
         map_choice = ""
@@ -323,9 +323,9 @@ class summer_scene:
             if map_choice == "1":
                 summer_scene.intro_choices()
             elif map_choice == "2":
-                summer_scene.plains(summer_scene.first_plains_v==it)
+                summer_scene.plains(summer_scene.first_plains_visit)
             elif map_choice == "3":
-                summer_scene.barn(summer_scene.first_barn_v==it)
+                summer_scene.barn(summer_scene.first_barn_visit)
     def tower_map():
         map_choice = ""
         map_options = ["1","2","3"]
@@ -333,10 +333,10 @@ class summer_scene:
             print("Where will you travel?\n\nOPTIONS:\n1 - Barn\n2 - Plains\n3 - Cave")
             map_choice = input()
             if map_choice == "1":
-                summer_scene.barn(summer_scene.first_barn_v==it)
+                summer_scene.barn(summer_scene.first_barn_visit)
             elif map_choice == "2":
-                summer_scene.plains(summer_scene.first_plains_v==it)
+                summer_scene.plains(summer_scene.first_plains_visit)
             elif map_choice == "3":
-                summer_scene.cave(summer_scene.first_cave_v==it)
+                summer_scene.cave(summer_scene.first_cave_visit)
 
-    run_scene(MainCharacter,first_entrance_v==it)
+    run_scene(MainCharacter,first_entrance_visit)
