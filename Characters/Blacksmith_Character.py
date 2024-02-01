@@ -1,4 +1,4 @@
-from .Story_Character import StoryCharacter
+from Characters.Story_Character import StoryCharacter
 
 class Blacksmith_Character(StoryCharacter):
     BSQ1, BSQ2, BSQ3, BSQ4 = False,False,False,False # blacksmith quesion
