@@ -1,9 +1,9 @@
 # Location class
 
-class location:
-    def __init__(self, name: str):
+class Location:
+    def __init__(self, name: str, discovered: bool):
         self.name = name
-        self.discovered = False
+        self.discovered = discovered
 
         # A list of sublocations 
         # For instance, I was thinking if there are things to do at a location can be kept track here

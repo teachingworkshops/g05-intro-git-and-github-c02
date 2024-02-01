@@ -16,24 +16,23 @@ class fall_scene:
     def __init__(self):
         self.locations = []
     # Runs the fall scene
-    def run_scene(traveler: MainCharacter):
+    def run_scene(self, traveler: MainCharacter):
         print("Welcome to the Fall Scene!\n")
         print("To begin there will be a traveling merchant at the start of each scene. Would you like to speak with the merchant?\n")
         while True: 
             talk_to_merchant = input("Enter ['y'] for yes or ['n'] for no\n")
             if talk_to_merchant == 'y':
-                fall_scene.merchant_scene(traveler)
+                self.merchant_scene(traveler)
                 break # Ends while loop
             elif talk_to_merchant == 'n':
                 break # Ends while loop
             else:
                 print("Please answer with 'y' or 'n.\n")
 
-        print("Where would you like to explore?\n")
-        input("[0]")
+        self.travel_function(traveler)
 
     # Tests the merchants dialogue and function of buying from the merchant 
-    def merchant_scene(traveler):
+    def merchant_scene(self, traveler):
         # Creates items for the character to buy
         axe = Weapon("Battle Axe", "A weapon that deals damage to enemies.", True, 25, 35)
         backpack_object = Backpack("Backpack", "Carries items that you pick up", True, 50, 5)
@@ -46,11 +45,11 @@ class fall_scene:
         print(f"\nMain character's backpack: {traveler.backpack.backpack_storage}")
         print(f"Main character's coin storage: {traveler.coin_storage} coins\n")
 
-    def travel_function(traveler):
+    def travel_function(self, traveler):
         # Create the all the locations -> Farm, forrest, great pumpkin
         farm = Farm("Farm")
-        forest = Forest("Forest")
         great_pumpkin = Great_Pumpkin("Great_Pumpkin")
+        forest = Forest("Forest", great_pumpkin)
 
         # Both the farm and the forest need to be discovered to move on to have the option to go to the great pumpkin
         while not farm.discovered and not forest.discovered:
@@ -60,30 +59,26 @@ class fall_scene:
             travel_action = input()
             if travel_action == "0":
                 farm.location_scene(traveler)
+                farm.discovered = True
             elif travel_action == "1":
                 forest.location_scene(traveler)
+                forest.discovered = True
             else:
                 print("Please enter a number that corresponds to a place")
 
-        #while great_pumpkin
-
-# -- Farm Location -- 
-        
-        # Need to create Farm location
-        # Farm location has sublocations: Barn, horse stables, once those have been discovered add corn maze
-
-        # Create a farmer character
-        
-    # -- Barn Sub-Location -- 
-        
-    # -- Horse Stable Sub-Location --
-        
-    # -- Corn Maze Sub-Location --
-        
-# -- Forest Location -- 
-        
-# -- Pumpkin Location (Final Location) --
-        
-
-
-        
+        while not great_pumpkin.completed:
+            print("Where would you like to travel to? Enter the number corresponding to the place.\n\n")
+            print("[0]Farm\n")
+            print("[1]Forest\n")
+            print("[2]Great Pumpkin\n")
+            travel_action = input()
+            if travel_action == "0":
+                farm.location_scene(traveler)
+                farm.discovered = True
+            elif travel_action == "1":
+                forest.location_scene(traveler)
+                forest.discovered = True
+            elif travel_action == "2":
+                great_pumpkin.location_scene(traveler)
+            else:
+                print("Please enter a number that corresponds to a place")
