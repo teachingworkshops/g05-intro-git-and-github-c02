@@ -182,7 +182,8 @@ class summer_scene:
 
             elif barn_choice == "2":
                 print("Another pause, then you hear a scoff through the door. 'So that's what you're calling yourself now? Don't make yourself out to be a bigger fool than you already are, Johnny. Go away.' You step back and take in your surroundings again.")
-                summer_scene.barn_event_1()
+                summer_scene.lied_at_barn = True
+                summer_scene.barn_event_1(summer_scene.lied_at_barn)
                 
     def barn_event_3():
         barn_choice = ""
