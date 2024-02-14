@@ -3,11 +3,12 @@ from User_Objects.Backpack import Backpack
 
 global STARTING_BACKPACK_STORAGE
 STARTING_BACKPACK_STORAGE = 3
+STARTING_HEALTH_POINTS = 100
 
 class MainCharacter:
     def __init__(self, name):
         self.name = name
-        self.health_points = 100
+        self.health_points = STARTING_HEALTH_POINTS
 
         # Character starts with a backpack with the capacity of holding a maximum of three objects
         self.backpack = Backpack("backpack", "allows you to store items that you find", False, 50, STARTING_BACKPACK_STORAGE)
@@ -41,3 +42,12 @@ class MainCharacter:
 
     def get_weapon(self):
         return self.weapon
+
+    def print_health_bar(self):
+        result = "|"
+        for i in range(STARTING_HEALTH_POINTS+1):
+            if self.health_points >= i:
+                result += '='
+            else:
+                result += ' '
+        print(result + "|\n")

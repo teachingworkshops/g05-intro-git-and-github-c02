@@ -313,6 +313,8 @@ class Corn_Maze():
             response_1 = input("\nChoose an action to perform.\n")
 
             if response_1 == "0":
+                print("Your health:\n")
+                self.traveler.print_health_bar()
                 print("Your weapons:\n")
                 count = 0
                 for index, item in enumerate(self.traveler.backpack.backpack_storage):
@@ -334,6 +336,8 @@ class Corn_Maze():
                                 break
                             else:
                                 print("Your weapon does enough damage. You won the fight!\n")
+                                print("Your health:\n")
+                                self.traveler.print_health_bar()
                                 print("You find a key on the minion and put it in your backpack\n")
                                 key = Key("Fall Season Key", "A key can be held onto and used during different parts of the season.", False, 100)
                                 self.traveler.backpack.key_storage.append(key) # Adds key to traveler
