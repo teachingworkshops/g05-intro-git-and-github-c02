@@ -45,9 +45,10 @@ class MainCharacter:
 
     def print_health_bar(self):
         result = "|"
-        for i in range(STARTING_HEALTH_POINTS+1):
-            if self.health_points >= i:
+        for i in range((int)(STARTING_HEALTH_POINTS/2)+1):
+            if self.health_points/2 >= i:
                 result += '='
             else:
                 result += ' '
-        print(result + "|\n")
+        print(result + "|  " + str(self.health_points) + " points")
+       
