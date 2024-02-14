@@ -20,6 +20,7 @@ class fall_scene:
         print("Welcome to the Fall Scene!\n")
         print("To begin there will be a traveling merchant at the start of each scene. Would you like to speak with the merchant?\n")
         while True: 
+            print(f"You currently have: {traveler.coin_storage} coins\n")
             talk_to_merchant = input("Enter ['y'] for yes or ['n'] for no\n")
             if talk_to_merchant == 'y':
                 self.merchant_scene(traveler)
