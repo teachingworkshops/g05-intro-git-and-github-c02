@@ -9,8 +9,33 @@ from Scenes.SummerScene import summer_scene
 
 from Characters.Main_Character import MainCharacter
 
-# Main function to run story game
+
+def display_start_menu():
+    print("Welcome to: ")
+    print("""
+_____  ____  _     _____   ____  _____   _____  _  _      _____
+/__ __\/  _ \/ \   /  __/  /  _ \/    /  /__ __\/ \/ \__/|/  __/
+  / \  | / \|| |   |  \    | / \||  __\    / \  | || |\/|||  \  
+  | |  | |-||| |_/\|  /_   | \_/|| |       | |  | || |  |||  /_ 
+  \_/  \_/ \|\____/\____\  \____/\_/       \_/  \_/\_/  \|\____\    """)
+    
+    print("\n[1] Start Game")
+    print("[2] Quit")
+    
+    choice = input("Enter your choice: ")
+    
+    if choice == "1":
+        print("Starting game...")
+        main()  
+    elif choice == "2":
+        print("Quitting game. Goodbye!")
+        exit()
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+        display_start_menu()
+
 def main():
+
     print("Hello traveler!\n")
     traveler = MainCharacter(input("What is your name?\n"))
     print("In this game you will be able to explore the 4 seasons and pick up items along to way to ultimately defeat the Timebro.\n")
@@ -30,4 +55,4 @@ def main():
     # Add functions to run other scenes
 
 if __name__ == "__main__":
-    main()
+    display_start_menu()
