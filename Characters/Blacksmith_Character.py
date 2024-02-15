@@ -7,7 +7,7 @@ class Blacksmith_Character(StoryCharacter):
         super().__init__(name)
         
     def Blacksmith_dialogue(self, traveler, haveOre, haveSand, haveOil, tookCoin):
-        print("You walk over to the Blacksmith. They put their hammer down and say,\nWhat do you want to know?")
+        print("You walk over to the Blacksmith. They put their hammer down and say,\n\"What do you want to know?\"")
 
         decision=""
         while decision != 5:
@@ -25,14 +25,14 @@ class Blacksmith_Character(StoryCharacter):
             elif(decision==4):
                 if(haveOre and haveSand and haveOil):
                     if(tookCoin):
-                        print("\nSure the Blacksmith said, he gets to crafting. Heating up the ore and blowing the glass.\nOnce it's complete he begrudingly hands you the latern and says,\nDo it for those for those who already fell.\n")
+                        print("\n\"Sure\" the Blacksmith said, he gets to crafting. Heating up the ore and blowing the glass.\nOnce it's complete he begrudingly hands you the latern and says,\n\"Do it for those for those who already fell.\"\n")
                     else:
                         print("\nGladly the Blacksmith said, he gets to crafting. Heating up the ore and blowing the glass.\nOnce it's complete he places in in your hads and says,\nThank you "+(traveler.name)+" and good luck!\n")
                     Blacksmith_Character.lCrafter=True
                 else:
                     print("\nI will make it for you once you have the materials for it.\n")
             elif(decision==5):
-                print("\nBye\n")
+                print("\nGoodbye\n")
             else:
                 print("\nSadly you can't do that\n")
             

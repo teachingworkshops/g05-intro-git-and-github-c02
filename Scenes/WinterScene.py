@@ -22,9 +22,9 @@ class winter_scene:
         print("As you rush down the path, the snow seems to be unleashing a heavy flurry apon you.\nHowever you spot a light in the distance. As you close in you see the light is coming from a old circular hut made of jointed stone with a roof of tightly knitted hay.\n")
         print("Due to the cold, you walk through the door wihtout a second thought. You first see a blacksmith working away on a anvil, sparks causing a bright light and skrieking sound.\nYou then spot a familier merchant on the other side of the hut. The blacksmith the yells out directed towards you.\n")
         # incentive
-        print("If you're headed towards the tower you're going to need to go through frostbitten cavrern.\nYou'll need me to craft you a latern powerful enough to take you through, else you'd be lukcy to get 20 feet.\n")
+        print("\"If you're headed towards the tower you're going to need to go through frostbitten cavrern.\nYou'll need me to craft you a latern powerful enough to take you through, else you'd be lukcy to get 20 feet.\n")
         # materials
-        print("The iron and sand for one should be at the old lake, however, I think you'll need an oil wick. That should be in what's left of the village.\n")
+        print("The iron and sand for one should be at the old lake, however, I think you'll need an oil wick. That should be in what's left of the village.\"\n")
         winter_scene.hut_decision(traveler)
 
     # travel scene functions
@@ -95,7 +95,7 @@ class winter_scene:
         # Creates items for the character to buy
         steelSwaord = Weapon("Steel Sword", "A weapon that deals damage to enemies.", True, 40, 50)
         helmet = Armor("Helmet", "Adds protection to any danger that approaches", True, 35, "head", 50)
-        chestplate = Armor("Chestplate", "Adds protection to any danger that approaches", True, 50, "head", 75)
+        chestplate = Armor("Chestplate", "Adds protection to any danger that approaches", True, 50, "chest", 75)
 
         merchant_store_list = [steelSwaord, helmet, chestplate]
         fall_scene_merchant = Merchant(merchant_store_list)

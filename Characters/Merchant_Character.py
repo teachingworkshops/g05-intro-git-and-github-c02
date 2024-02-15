@@ -114,6 +114,7 @@ class Merchant:
                         elif type(item) == Armor:
                             # Updates the armor the player has and it's health points
                             main_character.update_health_points(item)
+                            print(f"Added Health: {item.protection_value}")
                         elif type(item) == Weapon:
                             main_character.update_weapon(item)
                         else: 

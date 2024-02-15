@@ -50,12 +50,12 @@ class summer_scene:
 
     def plains(first_visit, knight_alive):
         if first_visit and knight_alive:
-            print("You walk across the lengthy field and notice a figure approaching in the distance. As you get closer, you realize he's much larger than you first thought. A hulking titan wearing a menacing suit of armor. He lodges his greatsword in the ground and speaks: '" +MainCharacter.__name__+ "!', he exclaims, 'I cannot let you go any further.'\n")
+            print(f"You walk across the lengthy field and notice a figure approaching in the distance. As you get closer, you realize he's much larger than you first thought. A hulking titan wearing a menacing suit of armor. He lodges his greatsword in the ground and speaks \" {MainCharacter.__name__}!\", he exclaims, \"I cannot let you go any further.\"\n")
             summer_scene.first_visit = False
             summer_scene.plains_event_1(summer_scene.player_has_rexcalibur)
 
         elif knight_alive:
-            print("The knight jeers at you and speaks: 'Returning once more after your cowardly retreat? What do you want?'")
+            print("The knight jeers at you and speaks \"Returning once more after your cowardly retreat? What do you want?\"")
             summer_scene.plains_event_1(summer_scene.player_has_rexcalibur)
         else:
             print("With the Titan Knight dead, the way to the tower is now clear.\n")
@@ -161,10 +161,10 @@ class summer_scene:
                 summer_scene.barn_event_1(summer_scene.lied_at_barn)
             elif barn_choice == "2":
                 if lied:
-                    print("You hear a voice inside again: 'Leave us alone, Johnny. You've already doomed us.'")
+                    print("You hear a voice inside again \"Leave us alone, Johnny. You've already doomed us.\"")
                     summer_scene.barn_event_1(summer_scene.lied_at_barn)
                 else:
-                    print("You knock on the door, and after a long pause you eventually hear 'Who's there?!'. They sound irritated and anxious.")
+                    print("You knock on the door, and after a long pause you eventually hear \"Who's there?!\". They sound irritated and anxious.")
                     summer_scene.barn_event_2()
             elif barn_choice == "3":
                 print("you rummage through the supplies, but find nothing of note.")
@@ -179,11 +179,11 @@ class summer_scene:
             print("What do you say?\n\nOPTIONS:\n1 - Jeff\n2 - Timebro")
             barn_choice = input()
             if barn_choice == "1":
-                print("There's another pause. 'Haven't heard that name before. You must be another survivor. Here, let me get the door for ya.' You hear a sliding sound, and then the door opens to reveal a man in ragged clothing. He gestures inside.")
+                print("There's another pause. \"Haven't heard that name before. You must be another survivor. Here, let me get the door for ya.\" You hear a sliding sound, and then the door opens to reveal a man in ragged clothing. He gestures inside.")
                 summer_scene.barn_event_3()
 
             elif barn_choice == "2":
-                print("Another pause, then you hear a scoff through the door. 'So that's what you're calling yourself now? Don't make yourself out to be a bigger fool than you already are, Johnny. Go away.' You step back and take in your surroundings again.")
+                print("Another pause, then you hear a scoff through the door. \"So that's what you're calling yourself now? Don't make yourself out to be a bigger fool than you already are, Johnny. Go away.\" You step back and take in your surroundings again.")
                 summer_scene.lied_at_barn = True
                 summer_scene.barn_event_1(summer_scene.lied_at_barn)
                 
@@ -195,10 +195,10 @@ class summer_scene:
             barn_choice = input()
             if barn_choice == "1":
                 print("You walk inside, and see only darkness until your eyes adjust to the dim light of the oil lamp hanging from a wood beam. Once you can see again, you realize there's several other people scattered around the barn. Presumably other survivors.")
-                print("\n'Didn't think there were any others out there. My name is Yomen. These folks are all the people left in this area. The rest didn't make it when Johnny cast that heat wave.")
+                print("\n\"Didn't think there were any others out there. My name is Yomen. These folks are all the people left in this area. The rest didn't make it when Johnny cast that heat wave.\"")
                 summer_scene.barn_event_4()
             elif barn_choice == "2":
-                print("'Suit yourself,' the man says, closing the door once more.")
+                print("\"Suit yourself,\" the man says, closing the door once more.")
                 summer_scene.barn_event_1(summer_scene.lied_at_barn)
 
     def barn_event_4():
@@ -208,10 +208,10 @@ class summer_scene:
             print("What do you say?\n\nOPTIONS:\n1 - Who's Johnny?\n2 - How long have you all been here?")
             plains_choice = input()
             if plains_choice == "1":
-                print("'Who's Johnny?! He's the one who caused this whole mess! Meddled with the arcane for some time, but lost the ring that kept his magic contained. Went crazy after that.'")
+                print("\"Who's Johnny?! He's the one who caused this whole mess! Meddled with the arcane for some time, but lost the ring that kept his magic contained. Went crazy after that.\"")
                 summer_scene.barn_event_5()
             elif plains_choice == "2":
-                print("'We've been here for months, hiding out from the heat and scavenging for survival. You can lay low with us if you like, but you'll have to help gather resources.'")
+                print("\"We've been here for months, hiding out from the heat and scavenging for survival. You can lay low with us if you like, but you'll have to help gather resources.\"")
                 summer_scene.intro_choices()
 
     def barn_event_5():
@@ -221,10 +221,10 @@ class summer_scene:
             print("What do you do?\n\nOPTIONS:\n1 - Tell Yomen you've come to defeat Timebro\n2 - Leave")
             plains_choice = input()
             if plains_choice == "1":
-                print("Yomen snorts. 'So that's what they're calling him now? Well, on the off chance you do come face to face with him, speak the words 'Adnus Incanum'. It will temporary weaken the magic's hold on him. Now if you're not going to help us scavenge, you'd best get going.")
+                print("Yomen snorts. \"So that's what they're calling him now? Well, on the off chance you do come face to face with him, speak the words 'Adnus Incanum'. It will temporary weaken the magic's hold on him. Now if you're not going to help us scavenge, you'd best get going.\"")
                 summer_scene.timebro_secret = True
             elif plains_choice == "2":
-                print("Good luck out there.")
+                print("\"Good luck out there.\"")
             print("You return to the entrance of the barn.")
             summer_scene.barn_event_1()
 
@@ -285,7 +285,7 @@ class summer_scene:
                 summer_scene.tower(summer_scene.first_tower_visit)
 
     def tower_event_3():
-        print("You walk inside the tower, and Timebro stands before you, looming over you at a menacing 5 feet even. His eyes look frantic. 'DO YOU HAVE THE RING?'")
+        print("You walk inside the tower, and Timebro stands before you, looming over you at a menacing 5 feet even. His eyes look frantic. \"DO YOU HAVE THE RING?\"")
         summer_scene.tower_event_4()
 
     def tower_event_4():
@@ -301,10 +301,10 @@ class summer_scene:
                 print("'FINALLY!' He snatches the ring from you and slides it on his finger. What appears to be relief on his face quickly shifts to pain as the ring absorbs all the excess magic from him. He tries to rip the ring off, but it's too late. All the magic is absorbed from him, and he collapses to the floor.\n\n YOU WIN?")
                 summer_scene.tower_event_3()
             elif tower_choice == "2":
-                print("'THEN PERISH,' he bellows, as he blasts you with a magic beam of death.\n\nYOU HAVE DIED.")
+                print("\"THEN PERISH,\" he bellows, as he blasts you with a magic beam of death.\n\nYOU HAVE DIED.")
                 summer_scene.tower(summer_scene.first_tower_visit)
             elif tower_choice == "3" and summer_scene.timebro_secret:
-                print("He looks at you strangely, but then the incantation takes effect. He gasps for breath before speaking 'It's too late for me, traveler. I'm already one with this power. I have no ability to stop it myself, but that ring can. Let me end this.' He gets these words out before falling back into his frantic state. 'WELL? DO YOU HAVE THE RING?'")
+                print("He looks at you strangely, but then the incantation takes effect. He gasps for breath before speaking \"It's too late for me, traveler. I'm already one with this power. I have no ability to stop it myself, but that ring can. Let me end this.\" He gets these words out before falling back into his frantic state. \"WELL? DO YOU HAVE THE RING?\"")
                 summer_scene.tower_event_4()
 
     def barn_map():

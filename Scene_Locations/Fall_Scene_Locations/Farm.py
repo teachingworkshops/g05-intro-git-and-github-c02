@@ -110,8 +110,8 @@ class Farm(Locations):
             print("\nWelcome back!\n")
             print("Feel free to explore my farm and grab anything that maybe of use to you.\n")
         else:
-            print("Hello there!\n")
-            print(f"I am {self.farmer_bob.name}. What brings you around these parts?\n")
+            print("\"Hello there!\n")
+            print(f"I am {self.farmer_bob.name}. What brings you around these parts?\"\n")
 
             while True:
                 print("Enter response to Farmer Bob.\n")
@@ -279,7 +279,7 @@ class Horse_Stable():
                         self.traveler.update_health_points(self.farm.horse_stable_wall[0])
                         # Remove the armor from the wall
                         self.farm.horse_stable_wall.remove(self.farm.horse_stable_wall[0])
-                        print("You have taken and put on the chest plate armor.\n")
+                        print("You have taken and put on the chest plate armor.\n Health added: 75")
                 elif response_1 == 'n':
                     pass
                 elif response_1 == 'q':
