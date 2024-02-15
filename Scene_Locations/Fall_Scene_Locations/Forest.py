@@ -42,6 +42,8 @@ class Forest(Locations):
                     response_2 = input("\nChoose an action to perform.\n")
 
                     if response_2 == "0":
+                        print("Your health:\n")
+                        traveler.print_health_bar()
                         print("Your weapons:\n")
                         count = 0
                         for index, item in enumerate(traveler.backpack.backpack_storage):
@@ -62,8 +64,12 @@ class Forest(Locations):
                                         break
                                     elif weapon_chosen.damage < 45:
                                         print("Your weapon does not have enough damage to take on both minions. You run away.\n")
+                                        traveler.print_health_bar()
+                                        print("Your weapons:\n")
                                     else:
                                         print("Your weapon does enough damage. You won the fight and took down both minions!\n")
+                                        traveler.print_health_bar()
+                                        print("Your weapons:\n")
                                         # Update the minions has interacted with player success
                                         self.small_minion.has_interacted = True
                                         self.large_minion.has_interacted = True

@@ -136,6 +136,9 @@ class winter_scene:
 
     # enemy fight scene
     def enemy_fight(traveler, enemy_name, enemy_health):
+        print("Your health:\n")
+        traveler.print_health_bar()
+
         print("The "+(enemy_name)+" with "+(str(enemy_health))+" health points, has challenged you to a battle.\n")
 
         if traveler.get_weapon()[1] < enemy_health :
@@ -144,6 +147,8 @@ class winter_scene:
             return False
         else:
             print("Congratulations, you beat the "+(enemy_name)+"!\nYou are awarded with 20 gold.\n")
+            print("Your health:\n")
+            traveler.print_health_bar()
             winter_scene.skeletonFelled=True
             traveler.coin_storage+=20
             return True
